@@ -1,6 +1,9 @@
 #include <iostream>
-#include <main.cpp>
+#include "../include/init.h"
 
 using namespace std;
 
-bool init()
+void init()
+{
+    cout << "repo initialised";
+}
