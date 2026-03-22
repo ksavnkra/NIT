@@ -1,11 +1,20 @@
-#include <iostream>
-#include <filesystem>
 #include "../include/init.h"
+#include <filesystem>
+#include <iostream>
 
 using namespace std;
 
-void init()
-{
+void init() {
+  if (!filesystem::exists(".nit")) {
+    filesystem::create_directory(".nit");
+    filesystem::create_directory(".nit/objects");
+    filesystem::create_directory(".nit/refs");
 
-    cout << "repo initialised";
+#ifdef _WIN32
+    SetFileAttributesA(".nit", FILE_ATTRIBUTE_HIDDEN);
+#endif
+
+    cout << "NIT REPO INITIALISED" << endl;
+  } else
+    cout << "NIT REPO ALREADY EXISTS" << endl;
 }
