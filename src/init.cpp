@@ -3,12 +3,12 @@
 #include <iostream>
 
 using namespace std;
-
+using namespace filesystem;
 void init() {
-  if (!filesystem::exists(".nit")) {
-    filesystem::create_directory(".nit");
-    filesystem::create_directory(".nit/objects");
-    filesystem::create_directory(".nit/refs");
+  if (!exists(".nit")) {
+    create_directory(".nit");
+    create_directory(".nit/objects");
+    create_directory(".nit/refs");
 
 #ifdef _WIN32
     SetFileAttributesA(".nit", FILE_ATTRIBUTE_HIDDEN);
