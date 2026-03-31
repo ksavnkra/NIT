@@ -1,3 +1,4 @@
+#include "../include/cat-file.h"
 #include "../include/hash_object.h"
 #include "../include/init.h"
 #include "../include/status.h"
@@ -28,6 +29,12 @@ int main(int argc, char *argv[]) {
     else
       cout << "ERROR: YOU MUST PROVIDE A FILE NAME TO HASH!\nfor e.g. \n\"nit "
               "hash-object file.txt\"\n";
+  } else if (command == "cat-file") {
+    if (argc >= 3) {
+      cout << catFile(argv[2]);
+    } else {
+      cout << "ERROR: MUST PROVIDE A HASH\n";
+    }
   } else
     cout << "No Command found\nType \"nit help\" for all the nit commands\n";
   return 0;
