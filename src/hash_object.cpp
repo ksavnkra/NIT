@@ -20,11 +20,11 @@ string hashingSha1(const string &content) {
   return hashedContent;
 }
 
-void hashObject(const string &filename) {
+string hashObject(const string &filename) {
   ifstream fileRead(filename, ios::binary);
-  if (!fileRead)
-    cout << "ERROR OPENING THE FILE\nMIGHT BE POSSIBLE FILE DOESN'T EXIST, "
-            "KINDLY CHECK\n";
+  if (!fileRead) {
+    return "";
+  }
   stringstream ss;
   ss << fileRead.rdbuf();
   fileRead.close();
@@ -35,4 +35,5 @@ void hashObject(const string &filename) {
   ofstream fileWrite(".nit/objects/" + hashedFileData, ios::binary);
   fileWrite.write(combination.c_str(), combination.size());
   cout << hashedFileData << endl;
+  return hashedFileData;
 }
