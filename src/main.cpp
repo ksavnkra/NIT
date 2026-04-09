@@ -1,5 +1,6 @@
 #include "../include/add.h"
 #include "../include/cat-file.h"
+#include "../include/commit.h"
 #include "../include/hash_object.h"
 #include "../include/init.h"
 #include "../include/status.h"
@@ -19,12 +20,15 @@ int main(int argc, char *argv[]) {
   else if (command == "add") {
     if (argc >= 3) {
       add(argv[2]);
-      cout << "Added " << argv[2] << " to the index!" << endl;
     } else
       cout << "ERROR: MUST PROVIDE A FILE TO ADD\n";
-  } else if (command == "commit")
-    cout << "commit Route";
-  else if (command == "help")
+  } else if (command == "commit") {
+    if (argc == 4 && string(argv[2]) == "-m") {
+      string message = argv[3];
+      commit(message);
+    } else
+      cout << "ERROR: MUST PROVIDE A MESSAGE TO COMMIT\n";
+  } else if (command == "help")
     cout << "help command";
   else if (command == "status")
     status();

@@ -34,6 +34,5 @@ string hashObject(const string &filename) {
   string hashedFileData = hashingSha1(combination);
   ofstream fileWrite(".nit/objects/" + hashedFileData, ios::binary);
   fileWrite.write(combination.c_str(), combination.size());
-  cout << hashedFileData << endl;
   return hashedFileData;
 }

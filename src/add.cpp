@@ -33,4 +33,5 @@ void add(const string &filename) {
   for (auto const &[key, val] : indexMap) {
     indexFile << key << '\0' << val << '\n';
   }
+  cout << "Added " << filename << " to the index!" << endl;
 }
